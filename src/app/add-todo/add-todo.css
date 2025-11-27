@@ -1,0 +1,30 @@
+.add-todo {
+    margin: auto;
+    width: 80%;
+}
+
+.add-todo, .add-todo form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #8abbbd;
+}
+
+.label-name, .input-name {
+    margin: 10px;
+    padding: 10px;
+}
+
+.add-todo-btn {
+    padding: 20px;
+    background-color: #1c3738;
+    color: white;
+    font-size: large;
+    border-radius: 10px;
+    border: none;
+    margin: 20px;
+}
+
+.add-todo-btn:hover {
+    box-shadow: 3px 3px 6px black;
+}

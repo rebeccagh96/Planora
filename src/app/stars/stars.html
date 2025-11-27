@@ -1,0 +1,11 @@
+<section class="stars">
+    <h1>Samlade stjärnor</h1>
+    <div class="stars-container">
+        <ul>
+            <li *ngFor="let todolist of todolists">
+                <a [routerLink]="['/list', todolist.toDoListId]">{{todolist.listName}}</a>
+                <p>Antal stjärnor: {{todolist.stars}}</p>
+            </li>
+        </ul>
+    </div>
+</section>

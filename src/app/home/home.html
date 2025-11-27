@@ -1,0 +1,11 @@
+<section class="my-lists">
+    <h1>Mina listor</h1>
+    <div class="list-container">
+        <ul>
+            <li *ngFor="let todolist of todolists">
+                <a [routerLink]="['/list', todolist.toDoListId]">{{ todolist.listName }}</a>
+            </li>
+        </ul>
+    </div>
+    <button routerLink="new-list" class="new-list-btn">Skapa ny lista</button>
+</section>

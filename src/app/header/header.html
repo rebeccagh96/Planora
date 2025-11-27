@@ -1,0 +1,19 @@
+<header>
+    <img class="logo-img" src="../logo/Planora.png" alt="Planora">
+    <div class="icon-container">
+        <button class="menu-btn" (click)="toggleMenu()" aria-label="Öppna meny">
+            <div class="hamburgermenu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+    </div>
+    <nav class="top-nav" id="top-nav" [class.is-open]="isMenuOpen">
+        <ul class="menu">
+            <li><a routerLink="">Mina listor</a></li>
+            <li><a routerLink="new-list">Skapa ny lista</a></li>
+            <li><a routerLink="stars">Samlade stjärnor</a></li>
+        </ul>
+    </nav>
+</header>

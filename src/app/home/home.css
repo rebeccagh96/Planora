@@ -1,0 +1,32 @@
+.my-lists {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-container {
+    width: 80%;
+}
+
+.list-container li {
+    background-color: #8abbbd;
+    list-style: none;
+    width: 75%;
+    padding: 30px;
+    margin: 20px;
+}
+
+.new-list-btn {
+    padding: 20px;
+    background-color: #1c3738;
+    color: white;
+    font-size: large;
+    border-radius: 10px;
+    border: none;
+    margin: 20px;
+}
+
+.new-list-btn:hover {
+    box-shadow: 3px 3px 6px black;
+}
