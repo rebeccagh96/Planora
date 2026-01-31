@@ -29,5 +29,13 @@ export class Stars {
     this.fetchLists();
   }
 
+  getTotalCollectedStars(): number {
+    let total = 0;
+    for (const list of this.todolists) {
+      total += list.stars || 0;
+    }
+    return total;
+  }
+
   @Input() todolist!: ToDoList;
 }

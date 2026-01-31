@@ -1,13 +1,11 @@
 .add-todo {
     margin: auto;
-    width: 80%;
 }
 
 .add-todo, .add-todo form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #8abbbd;
 }
 
 .label-name, .input-name {

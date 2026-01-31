@@ -1,17 +1,20 @@
-.list, .button-container {
+.list, .button-container, .tasks-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.list {
+.list, .tasks-container {
     flex-direction: column;
-    background-color: #8abbbd;
-    width: 80%;
-    margin: auto;
 }
 
 .tasks-container {
+    width: 80%;
+    background-color: #8abbbd;
+}
+
+.tasks-container ul {
+    padding: 0;
     width: 80%;
 }
 
@@ -19,8 +22,7 @@
     background-color: #f4fff8;
     list-style: none;
     padding: 30px;
-    margin: 20px;
-    margin-left: 0;
+    margin: 20px 0;
     display: flex;
     justify-content: space-between;
 }
@@ -35,6 +37,18 @@
     margin: 20px;
 }
 
+.task-checkbox {
+    transform: scale(1.5);
+}
+
 .new-task-btn:hover, .remove-list-btn:hover, .edit-list-btn:hover {
     box-shadow: 3px 3px 6px black;
+}
+
+.star {
+    display: none;
+}
+
+.star.completed {
+    display: flex;
 }

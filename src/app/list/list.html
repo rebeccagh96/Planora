@@ -1,21 +1,22 @@
-<section class="list">
+<section class="list" *ngIf="todolist">
     <button class="back-btn" routerLink="">Tillbaka</button>
-    <h1>{{todolist.listName}}</h1>
-    <p>Antal samlade stjärnor: {{todolist.stars}}</p>
     <div class="tasks-container">
+        <h1>{{todolist.listName}}</h1>
+        <p>Antal samlade ⭐: {{todolist.stars}}</p>
         <ul>
             <li *ngFor="let todo of todolist.toDos">
                 {{todo.name}} 
                 <a [routerLink]="['/update-todo', todolist.toDoListId, todo.toDoId]">
                     Uppdatera uppgift
                 </a>
-                <input class="task-checkbox" type=checkbox [checked]="todo.completed" (change)="toggleCompleted(todo)">
+                <div class="star" [class.completed]="todo.completed">⭐</div>
+                <input class="task-checkbox" type="checkbox" [checked]="todo.completed" (change)="toggleCompleted(todo)">
             </li>
         </ul>
     </div>
     <button [routerLink]="['/add-todo', todolist.toDoListId]" class="new-task-btn">Lägg till uppgift</button>
 </section>
-<div class="button-container">
+<div class="button-container" *ngIf="todolist">
     <button class="remove-list-btn" (click)="deleteList(todolist.toDoListId)">Ta bort lista</button>
     <button class="edit-list-btn" [routerLink]="['/update-list', todolist.toDoListId]">Redigera lista</button>
 </div>

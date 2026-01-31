@@ -1,13 +1,11 @@
 .update-list {
     margin: auto;
-    width: 80%;
 }
 
 .update-list, .update-list form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #8abbbd;
 }
 
 .label-name, .input-name {

@@ -1,22 +1,26 @@
 .stars {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .stars-container {
-    width: 80%;
+  width: 80%;
+}
+
+.stars-container ul {
+  padding: 0;
+  margin: 0;
 }
 
 .stars-container li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #8abbbd;
-    list-style: none;
-    width: 75%;
-    padding: 30px;
-    margin: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #8abbbd;
+  list-style: none;
+  padding: 30px;
+  margin: 20px 0;
 }

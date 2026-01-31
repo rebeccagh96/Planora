@@ -1,7 +1,7 @@
 <section class="update-list">
     <button class="back-btn" [routerLink]="['/list/', toDoListId]">Tillbaka</button>
     <form (ngSubmit)="updateList()">
-        <h3>Redigera listnamn:</h3>
+        <h1>Redigera listnamn:</h1>
         <input type="hidden" name="toDoListId" [(ngModel)]="toDoListId">
         <input type="hidden" name="stars" [(ngModel)]="stars">
         <label class="label-name">Nytt namn på listan:</label>

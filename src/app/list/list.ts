@@ -32,7 +32,15 @@ export class List {
   deleteList(id: number) {
     if (id == null) {
       alert("Något gick fel, hittade inte listan du vill radera!");
+      return;
     }
+
+    const result = confirm("Är det säkert att du vill radera denna listan?");
+
+    if (!result) {
+      return;
+    }
+
     if (id != null) {
       this.http.delete(`https://localhost:7097/api/ToDoList/${id}`)
       .subscribe({
@@ -46,7 +54,7 @@ export class List {
     }
   }
 
-  toggleCompleted( todo: any) {
+  toggleCompleted( todo: any) {//Ändra any till ToDo?
     const body = { toDoId: todo.toDoId, name: todo.name, completed: !todo.completed };
     
     if (todo == null) {

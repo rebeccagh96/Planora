@@ -3,9 +3,10 @@ footer {
     flex-direction: row;
     justify-content: center;
     background-color: #1c3738;
-    height: 100px;
+    height: 80px;
 }
 
 .footer-img {
     height: 80%;
+    margin: auto;
 }

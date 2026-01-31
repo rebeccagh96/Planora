@@ -1,7 +1,7 @@
 <section class="update-todo">
     <button class="back-btn" [routerLink]="['/list/', toDoListId]">Tillbaka</button>
     <form (ngSubmit)="updateToDo()">
-        <h3>Redigera uppgift:</h3>
+        <h1>Redigera uppgift:</h1>
         <input type="hidden" name="toDoId" [(ngModel)]="toDoId">
         <label class="label-name">Nytt namn på uppgiften:</label>
         <input class="input-name" type="text" name="name" [(ngModel)]="name" required>

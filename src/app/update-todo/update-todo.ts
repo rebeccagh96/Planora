@@ -64,7 +64,15 @@ export class UpdateTodo {
   deleteToDo(id: number) {
     if (id == null) {
       alert("Något gick fel, hittade inte uppgiften du vill radera!");
+      return;
     }
+
+    const result = confirm("Är du säker på att du vill radera denna uppgift?");
+
+    if (!result) {
+      return;
+    }
+
     if (id != null) {
       this.http.delete(`https://localhost:7097/api/ToDoList/ToDo/${id}`)
       .subscribe({
