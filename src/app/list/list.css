@@ -1,54 +1,63 @@
-.list, .button-container, .tasks-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.list,
+.button-container,
+.tasks-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.list, .tasks-container {
-    flex-direction: column;
+.list,
+.tasks-container {
+  flex-direction: column;
 }
 
 .tasks-container {
-    width: 80%;
-    background-color: #8abbbd;
+  width: 80%;
+  background-color: #8abbbd;
 }
 
 .tasks-container ul {
-    padding: 0;
-    width: 80%;
+  padding: 0;
+  width: 80%;
 }
 
 .tasks-container li {
-    background-color: #f4fff8;
-    list-style: none;
-    padding: 30px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: space-between;
+  background-color: #f4fff8;
+  list-style: none;
+  padding: 30px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.new-task-btn, .remove-list-btn, .edit-list-btn {
-    padding: 20px;
-    background-color: #1c3738;
-    color: white;
-    font-size: large;
-    border-radius: 10px;
-    border: none;
-    margin: 20px;
+.new-task-btn,
+.remove-list-btn,
+.edit-list-btn {
+  padding: 20px;
+  background-color: #1c3738;
+  color: white;
+  font-size: large;
+  border-radius: 10px;
+  border: none;
+  margin: 20px;
 }
 
 .task-checkbox {
-    transform: scale(1.5);
+  transform: scale(1.5);
 }
 
-.new-task-btn:hover, .remove-list-btn:hover, .edit-list-btn:hover {
-    box-shadow: 3px 3px 6px black;
+.new-task-btn:hover,
+.remove-list-btn:hover,
+.edit-list-btn:hover {
+  box-shadow: 3px 3px 6px black;
 }
 
 .star {
-    display: none;
+  display: none;
 }
 
 .star.completed {
-    display: flex;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.2em;
 }

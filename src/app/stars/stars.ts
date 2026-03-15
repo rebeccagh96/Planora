@@ -3,11 +3,10 @@ import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToDoList } from '../../types';
 import { ListsService } from '../services/lists';
-import { List } from '../list/list';
 
 @Component({
   selector: 'app-stars',
-  imports: [CommonModule, RouterLink, List],
+  imports: [CommonModule, RouterLink],
   templateUrl: './stars.html',
   styleUrl: './stars.css',
 })
@@ -16,12 +15,11 @@ export class Stars {
 
   constructor(private listsService: ListsService) {}
 
-  fetchLists(){
-    this.listsService.getData()
-    .subscribe({
-      next:(data:ToDoList[]) => {
-        this.todolists = data
-      }
+  fetchLists() {
+    this.listsService.getData().subscribe({
+      next: (data: ToDoList[]) => {
+        this.todolists = data;
+      },
     });
   }
 

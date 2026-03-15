@@ -1,45 +1,45 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f4fff8;
+  margin: 0;
+  padding: 0;
+  background-color: #f4fff8;
 }
 
 app-root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }
 
 .back-btn {
-    padding: 20px;
-    background-color: #1c3738;
-    color: white;
-    font-size: large;
-    border-radius: 10px;
-    border: none;
-    margin: 20px;
+  padding: 20px;
+  background-color: #1c3738;
+  color: white;
+  font-size: large;
+  border-radius: 10px;
+  border: none;
+  margin: 20px;
 }
 
 .back-btn:hover {
-    box-shadow: 3px 3px 6px black;
+  box-shadow: 3px 3px 6px black;
 }
 
 form {
-    background-color: #8abbbd;
-    width: 80%;
-    padding: 40px 0;
+  background-color: #8abbbd;
+  width: 80%;
+  padding: 40px 0;
 }
 
 a {
-    text-decoration: none;
-    color: black;
-    font-size: large;
+  text-decoration: none;
+  color: black;
+  font-size: 1em;
 }
 
 li {
-    font-size: large;
+  font-size: 1em;
 }

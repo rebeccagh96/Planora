@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ToDoList } from '../../types';
+import { ToDo, ToDoList } from '../../types';
 import { ListsService } from '../services/lists';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
@@ -19,73 +19,68 @@ export class List {
   constructor(
     private route: ActivatedRoute,
     private listsService: ListsService,
-    private http: HttpClient ) {}
+    private http: HttpClient,
+  ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id') as string;
-    this.listsService.getList(id.toString()).subscribe(data => {
+    this.listsService.getList(id.toString()).subscribe((data) => {
       console.log(data);
-      this.todolist = data
+      this.todolist = data;
     });
   }
 
   deleteList(id: number) {
     if (id == null) {
-      alert("Något gick fel, hittade inte listan du vill radera!");
+      alert('Något gick fel, hittade inte listan du vill radera!');
       return;
     }
 
-    const result = confirm("Är det säkert att du vill radera denna listan?");
+    const result = confirm('Är det säkert att du vill radera denna listan?');
 
     if (!result) {
       return;
     }
 
     if (id != null) {
-      this.http.delete(`https://localhost:7097/api/ToDoList/${id}`)
-      .subscribe({
+      this.http.delete(`https://localhost:7097/api/ToDoList/${id}`).subscribe({
         next: () => {
-          alert("Listan raderades!"),
-          this.todolists = this.todolists.filter(l => l.toDoListId !== id),
-          window.location.href = ""
+          (alert('Listan raderades!'),
+            (this.todolists = this.todolists.filter((l) => l.toDoListId !== id)),
+            (window.location.href = ''));
         },
-        error: err => console.error(err)
+        error: (err) => console.error(err),
       });
     }
   }
 
-  toggleCompleted( todo: any) {//Ändra any till ToDo?
+  toggleCompleted(todo: any) {
     const body = { toDoId: todo.toDoId, name: todo.name, completed: !todo.completed };
-    
+
     if (todo == null) {
-      alert("Kan inte ändra status på uppgiften!");
+      alert('Kan inte ändra status på uppgiften!');
     }
     if (todo != null) {
-      this.http.patch(
-        `https://localhost:7097/api/ToDoList/ToDo/${body.toDoId}`, body)
-        .subscribe({
+      this.http.patch(`https://localhost:7097/api/ToDoList/ToDo/${body.toDoId}`, body).subscribe({
         next: () => {
           todo.completed = body.completed;
           this.starsCounter();
           this.updateStars(todo.toDoListId, this.todolist);
         },
-        error: (err) => console.error(err)
+        error: (err) => console.error(err),
       });
     }
   }
 
   starsCounter() {
     if (!this.todolist || !this.todolist.toDos) return;
-    this.todolist.stars = this.todolist.toDos.filter(t => t.completed).length;
+    this.todolist.stars = this.todolist.toDos.filter((t) => t.completed).length;
   }
 
   updateStars(id: number, toDoList: ToDoList) {
-    this.http.patch(`https://localhost:7097/api/ToDoList/${id}`, 
-      toDoList)
-      .subscribe({
-        next: () =>
-          console.log("Stjärnor uppdaterade!"),
-        error: err => console.error(err)
+    this.http.patch(`https://localhost:7097/api/ToDoList/${id}`, toDoList).subscribe({
+      next: () => console.log('Stjärnor uppdaterade!'),
+      error: (err) => console.error(err),
     });
   }
 }
