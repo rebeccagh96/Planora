@@ -28,7 +28,8 @@ main {
   box-shadow: 3px 3px 6px black;
 }
 
-form {
+form,
+.update-todo-container {
   background-color: #8abbbd;
   width: 80%;
   padding: 40px 0;
@@ -42,4 +43,18 @@ a {
 
 li {
   font-size: 1em;
+}
+
+i {
+  color: #1c3738;
+  margin-right: 0.5em;
+}
+
+.btn-icon {
+  font-size: 20px;
+  margin: 0 1em 0 1em;
+}
+
+.icon {
+  color: white;
 }

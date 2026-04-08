@@ -1,23 +1,53 @@
 <section class="list" *ngIf="todolist">
-    <button class="back-btn" routerLink="">Tillbaka</button>
-    <div class="tasks-container">
-        <h1>{{todolist.listName}}</h1>
-        <p>Antal samlade ⭐: {{todolist.stars}}</p>
-        <ul>
-            <li *ngFor="let todo of todolist.toDos">
-                {{todo.name}} 
-                <a [routerLink]="['/update-todo', todolist.toDoListId, todo.toDoId]">
-                    Uppdatera uppgift
-                </a>
-                <div class="star" [class.completed]="todo.completed">⭐</div>
-                <input class="task-checkbox" type="checkbox" [checked]="todo.completed" (change)="toggleCompleted(todo)">
-            </li>
-        </ul>
+  <button class="back-btn" routerLink="">
+    <i class="fa-solid fa-angle-left icon"></i>Tillbaka
+  </button>
+  <div class="tasks-container">
+    <div class="button-container" *ngIf="todolist">
+      <button
+        class="remove-list-btn"
+        aria-label="Ta bort lista"
+        (click)="openDeleteModal(todolist.toDoListId)"
+      >
+        <i class="fa-solid fa-trash-can btn-icon"></i>
+      </button>
+      <button
+        class="edit-list-btn"
+        aria-label="Redigera lista"
+        [routerLink]="['/update-list', todolist.toDoListId]"
+      >
+        <i class="fa-solid fa-pen btn-icon"></i>
+      </button>
     </div>
-    <button [routerLink]="['/add-todo', todolist.toDoListId]" class="new-task-btn">Lägg till uppgift</button>
+    <h1>{{ todolist.listName }}</h1>
+    <p>Antal ⭐:{{ todolist.stars }}</p>
+    <ul>
+      <li *ngFor="let todo of todolist.toDos">
+        <div>
+          <a [routerLink]="['/update-todo', todolist.toDoListId, todo.toDoId]"
+            ><i class="fa-solid fa-pen"></i></a
+          >{{ todo.name }}
+        </div>
+        <div class="star" [class.completed]="todo.completed">⭐</div>
+        <input
+          class="task-checkbox"
+          type="checkbox"
+          [checked]="todo.completed"
+          (change)="toggleCompleted(todo)"
+        />
+      </li>
+    </ul>
+    <button [routerLink]="['/add-todo', todolist.toDoListId]" class="new-task-btn">
+      <i class="fa-solid fa-plus icon"></i>Lägg till uppgift
+    </button>
+  </div>
+  <app-confirm-modal
+    *ngIf="isModalOpen"
+    [title]="'Radera lista'"
+    [message]="'Är du säker på att du vill radera listan?'"
+    (confirm)="confirmDelete()"
+    (cancel)="cancelDelete()"
+  >
+  </app-confirm-modal>
+  <app-notification #notification></app-notification>
 </section>
-<div class="button-container" *ngIf="todolist">
-    <button class="remove-list-btn" (click)="deleteList(todolist.toDoListId)">Ta bort lista</button>
-    <button class="edit-list-btn" [routerLink]="['/update-list', todolist.toDoListId]">Redigera lista</button>
-</div>
-

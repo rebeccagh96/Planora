@@ -2,8 +2,19 @@
 .button-container,
 .tasks-container {
   display: flex;
+  margin-bottom: 1em;
+}
+
+.list,
+.tasks-container {
   justify-content: center;
   align-items: center;
+}
+
+.button-container {
+  width: 100%;
+  margin: 1em 1em 0 1em;
+  justify-content: space-between;
 }
 
 .list,
@@ -30,25 +41,27 @@
   justify-content: space-between;
 }
 
-.new-task-btn,
-.remove-list-btn,
-.edit-list-btn {
-  padding: 20px;
+.new-task-btn {
+  padding: 15px;
   background-color: #1c3738;
   color: white;
-  font-size: large;
+  font-size: 16px;
   border-radius: 10px;
   border: none;
-  margin: 20px;
+  margin: 0 0 2em 0;
+}
+
+.remove-list-btn,
+.edit-list-btn {
+  border: none;
+  background: none;
 }
 
 .task-checkbox {
   transform: scale(1.5);
 }
 
-.new-task-btn:hover,
-.remove-list-btn:hover,
-.edit-list-btn:hover {
+.new-task-btn:hover {
   box-shadow: 3px 3px 6px black;
 }
 

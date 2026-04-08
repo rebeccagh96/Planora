@@ -1,11 +1,14 @@
 <section class="update-list">
-    <button class="back-btn" [routerLink]="['/list/', toDoListId]">Tillbaka</button>
-    <form (ngSubmit)="updateList()">
-        <h1>Redigera listnamn:</h1>
-        <input type="hidden" name="toDoListId" [(ngModel)]="toDoListId">
-        <input type="hidden" name="stars" [(ngModel)]="stars">
-        <label class="label-name">Nytt namn på listan:</label>
-        <input class="input-name" type="text" name="listName" [(ngModel)]="listName" required>
-        <button class="update-list-btn" type="submit">Uppdatera listnamn</button>
-    </form>
+  <button class="back-btn" [routerLink]="['/list/', toDoListId]">
+    <i class="fa-solid fa-angle-left icon"></i>Tillbaka
+  </button>
+  <form (ngSubmit)="updateList()">
+    <h1>Redigera listnamn:</h1>
+    <input type="hidden" name="toDoListId" [(ngModel)]="toDoListId" />
+    <input type="hidden" name="stars" [(ngModel)]="stars" />
+    <label class="label-name">Nytt namn på listan:</label>
+    <input class="input-name" type="text" name="listName" [(ngModel)]="listName" required />
+    <button class="update-list-btn" type="submit">Spara</button>
+  </form>
+  <app-notification #notification></app-notification>
 </section>
