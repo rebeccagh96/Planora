@@ -1,11 +1,28 @@
 <section class="update-todo">
-    <button class="back-btn" [routerLink]="['/list/', toDoListId]">Tillbaka</button>
+  <button class="back-btn" [routerLink]="['/list/', toDoListId]">
+    <i class="fa-solid fa-angle-left icon"></i>Tillbaka
+  </button>
+  <div class="update-todo-container">
+    <button class="remove-todo-btn" aria-label="Ta bort uppgift" (click)="openDeleteModal(toDoId)">
+      <i class="fa-solid fa-trash-can btn-icon"></i>
+    </button>
     <form (ngSubmit)="updateToDo()">
-        <h1>Redigera uppgift:</h1>
-        <input type="hidden" name="toDoId" [(ngModel)]="toDoId">
-        <label class="label-name">Nytt namn på uppgiften:</label>
-        <input class="input-name" type="text" name="name" [(ngModel)]="name" required>
-        <button class="update-todo-btn" type="submit">Uppdatera uppgift</button>
+      <h1>Redigera uppgift:</h1>
+      <input type="hidden" name="toDoId" [(ngModel)]="toDoId" />
+      <label class="label-name">Nytt namn på uppgiften:</label>
+      <input class="input-name" type="text" name="name" [(ngModel)]="name" required />
+      <div class="button-container">
+        <button class="update-todo-btn" type="submit">Spara</button>
+      </div>
     </form>
-    <button class="update-todo-btn" (click)="deleteToDo(toDoId)">Radera uppgift</button>
+  </div>
+  <app-confirm-modal
+    *ngIf="isModalOpen"
+    [title]="'Radera uppgift'"
+    [message]="'Är du säker på att du vill radera uppgiften?'"
+    (confirm)="confirmDelete()"
+    (cancel)="cancelDelete()"
+  >
+  </app-confirm-modal>
+  <app-notification #notification></app-notification>
 </section>

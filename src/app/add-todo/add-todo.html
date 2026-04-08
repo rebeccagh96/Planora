@@ -1,9 +1,12 @@
 <section class="add-todo">
-    <button class="back-btn" [routerLink]="['/list/', toDoListId]">Tillbaka</button>
-    <form (ngSubmit)="createToDo()">
-        <h1>Lägg till uppgift</h1>
-        <label class="label-name">Namn på uppgift:</label>
-        <input class="input-name" type="text" name="name" [(ngModel)]="name" required>
-        <button class="add-todo-btn" type="submit">Lägg till uppgift</button>
-    </form>
+  <button class="back-btn" [routerLink]="['/list/', toDoListId]">
+    <i class="fa-solid fa-angle-left icon"></i>Tillbaka
+  </button>
+  <form (ngSubmit)="createToDo()">
+    <h1>Lägg till uppgift</h1>
+    <label class="label-name">Namn på uppgift:</label>
+    <input class="input-name" type="text" name="name" [(ngModel)]="name" required />
+    <button class="add-todo-btn" type="submit">Lägg till uppgift</button>
+  </form>
+  <app-notification #notification></app-notification>
 </section>

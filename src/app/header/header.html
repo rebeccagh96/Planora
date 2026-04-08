@@ -3,9 +3,8 @@
   <div class="icon-container">
     <button class="menu-btn" (click)="toggleMenu()" aria-label="Öppna meny">
       <div class="hamburgermenu-icon">
-        <span></span>
-        <span></span>
-        <span></span>
+        <i *ngIf="isMenuOpen" class="fa-solid fa-xmark"></i>
+        <i *ngIf="!isMenuOpen" class="fa-solid fa-bars"></i>
       </div>
     </button>
   </div>
