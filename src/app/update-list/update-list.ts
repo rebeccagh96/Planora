@@ -6,7 +6,6 @@ import { ListsService } from '../services/lists';
 import { ToDoList } from '../../types';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Notification } from '../notification/notification';
-import { share } from 'rxjs';
 
 @Component({
   selector: 'app-update-list',
