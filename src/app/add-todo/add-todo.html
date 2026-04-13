@@ -4,8 +4,8 @@
   </button>
   <form (ngSubmit)="createToDo()">
     <h1>Lägg till uppgift</h1>
-    <label class="label-name">Namn på uppgift:</label>
-    <input class="input-name" type="text" name="name" [(ngModel)]="name" required />
+    <label for="todo-name" class="label-name">Namn på uppgift:</label>
+    <input class="input-name" type="text" name="name" id="todo-name" [(ngModel)]="name" required />
     <button class="add-todo-btn" type="submit">Lägg till uppgift</button>
   </form>
   <app-notification #notification></app-notification>

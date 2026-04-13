@@ -24,12 +24,17 @@
     <ul>
       <li *ngFor="let todo of todolist.toDos">
         <div>
-          <a [routerLink]="['/update-todo', todolist.toDoListId, todo.toDoId]"
-            ><i class="fa-solid fa-pen"></i></a
+          <button
+            class="edit-todo-button"
+            aria-label="Redigera uppgift"
+            [routerLink]="['/update-todo', todolist.toDoListId, todo.toDoId]"
+          >
+            <i class="fa-solid fa-pen"></i></button
           >{{ todo.name }}
         </div>
         <div class="star" [class.completed]="todo.completed">⭐</div>
         <input
+          aria-label="Klarmarkera uppgift"
           class="task-checkbox"
           type="checkbox"
           [checked]="todo.completed"

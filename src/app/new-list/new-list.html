@@ -4,8 +4,15 @@
   </button>
   <form (ngSubmit)="createList()">
     <h1>Skapa ny lista</h1>
-    <label class="label-name">Namn på listan:</label>
-    <input class="input-name" type="text" name="listName" [(ngModel)]="listName" required />
+    <label for="list-name" class="label-name">Namn på listan:</label>
+    <input
+      class="input-name"
+      type="text"
+      name="listName"
+      id="list-name"
+      [(ngModel)]="listName"
+      required
+    />
     <button class="new-list-btn" type="submit">Skapa lista</button>
   </form>
   <app-notification #notification></app-notification>
