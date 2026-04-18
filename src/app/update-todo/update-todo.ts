@@ -29,14 +29,14 @@ export class UpdateTodo {
 
   constructor(
     private route: ActivatedRoute,
-    private service: ListsService,
+    private listsService: ListsService,
     private http: HttpClient,
   ) {}
 
   ngOnInit() {
     const listid = this.route.snapshot.params['listid'];
     this.toDoId = Number(this.route.snapshot.params['todoid']);
-    this.service.getList(listid).subscribe((list) => {
+    this.listsService.getListByListId(listid).subscribe((list) => {
       this.todolist = list;
       this.listName = list.listName;
       this.toDoListId = list.toDoListId;
@@ -53,12 +53,18 @@ export class UpdateTodo {
   }
 
   updateToDo() {
-    const body = { toDoId: this.toDoId, completed: this.completed, name: this.name };
+    const body = {
+      toDoId: this.toDoId,
+      completed: this.completed,
+      name: this.name,
+    };
+
     if (this.name == '') {
       this.notification.showNotification('Du kan inte uppdatera till ett tomt namn!');
     }
+
     if (this.name != '') {
-      this.http.patch(`https://localhost:7097/api/ToDoList/ToDo/${this.toDoId}`, body).subscribe({
+      this.listsService.updateToDo(this.toDoId, body).subscribe({
         next: () => {
           (this.notification.showNotification('Uppgiften uppdaterades!', 'success'),
             setTimeout(() => {
@@ -105,13 +111,11 @@ export class UpdateTodo {
     const todoToDelete = this.todos.find((t) => t.toDoId === id);
 
     if (id != null) {
-      this.http.delete(`https://localhost:7097/api/ToDoList/ToDo/${id}`).subscribe({
+      this.listsService.deleteToDo(id).subscribe({
         next: () => {
           if (todoToDelete?.completed) {
             this.todolist.stars--;
-            this.http
-              .patch(`https://localhost:7097/api/ToDoList/${this.toDoListId}`, this.todolist)
-              .subscribe();
+            this.listsService.updateList(this.toDoListId, this.todolist).subscribe();
           }
           (this.notification.showNotification('Uppgiften raderades!', 'success'),
             (this.todos = this.todos.filter((l) => l.toDoId !== id)),

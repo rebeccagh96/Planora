@@ -30,8 +30,7 @@ export class List {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id') as string;
-    this.listsService.getList(id.toString()).subscribe((data) => {
-      console.log(data);
+    this.listsService.getListByListId(id.toString()).subscribe((data) => {
       this.todolist = data;
     });
   }
@@ -64,7 +63,7 @@ export class List {
     }
 
     if (id != null) {
-      this.http.delete(`https://localhost:7097/api/ToDoList/${id}`).subscribe({
+      this.listsService.deleteList(id).subscribe({
         next: () => {
           (this.notification.showNotification('Listan raderades!', 'success'),
             (this.todolists = this.todolists.filter((l) => l.toDoListId !== id)),
@@ -80,17 +79,21 @@ export class List {
   }
 
   toggleCompleted(todo: any) {
-    const body = { toDoId: todo.toDoId, name: todo.name, completed: !todo.completed };
+    const body = {
+      toDoId: todo.toDoId,
+      name: todo.name,
+      completed: !todo.completed,
+    };
 
     if (todo == null) {
       this.notification.showNotification('Kan inte ändra status på uppgiften!', 'error');
     }
     if (todo != null) {
-      this.http.patch(`https://localhost:7097/api/ToDoList/ToDo/${body.toDoId}`, body).subscribe({
+      this.listsService.updateToDo(body.toDoId, body).subscribe({
         next: () => {
           todo.completed = body.completed;
           this.starsCounter();
-          this.updateStars(todo.toDoListId, this.todolist);
+          this.listsService.updateList(todo.toDoListId, this.todolist).subscribe();
         },
         error: (err) => {
           this.notification.showNotification(
@@ -105,12 +108,5 @@ export class List {
   starsCounter() {
     if (!this.todolist || !this.todolist.toDos) return;
     this.todolist.stars = this.todolist.toDos.filter((t) => t.completed).length;
-  }
-
-  updateStars(id: number, toDoList: ToDoList) {
-    this.http.patch(`https://localhost:7097/api/ToDoList/${id}`, toDoList).subscribe({
-      next: () => console.log('Stjärnor uppdaterade!'),
-      error: (err) => console.error(err),
-    });
   }
 }

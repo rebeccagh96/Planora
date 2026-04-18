@@ -4,6 +4,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Notification } from '../notification/notification';
+import { ListsService } from '../services/lists';
 
 @Component({
   selector: 'app-new-list',
@@ -16,15 +17,23 @@ export class NewList {
 
   @ViewChild('notification') notification!: Notification;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private listsService: ListsService,
+  ) {}
 
   createList() {
-    const body = { listName: this.listName, stars: 0 };
-    if (this.listName == '') {
+    const body = {
+      listName: this.listName,
+      stars: 0,
+    };
+
+    if (this.listName === '') {
       this.notification.showNotification('Du kan inte skapa en lista utan namn!', 'error');
     }
+
     if (this.listName != '') {
-      this.http.post('https://localhost:7097/api/ToDoList', body).subscribe({
+      this.listsService.createList(body).subscribe({
         next: () => {
           (this.notification.showNotification('Lista skapad!', 'success'),
             setTimeout(() => {

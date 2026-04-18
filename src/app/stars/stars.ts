@@ -1,24 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToDoList } from '../../types';
 import { ListsService } from '../services/lists';
+import { Notification } from '../notification/notification';
 
 @Component({
   selector: 'app-stars',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, Notification],
   templateUrl: './stars.html',
   styleUrl: './stars.css',
 })
 export class Stars {
   todolists: ToDoList[] = [];
+  @ViewChild('notification') notification!: Notification;
 
   constructor(private listsService: ListsService) {}
 
   fetchLists() {
-    this.listsService.getData().subscribe({
+    this.listsService.getAllLists().subscribe({
       next: (data: ToDoList[]) => {
         this.todolists = data;
+      },
+      error: (err) => {
+        this.notification.showNotification(
+          'Något gick fel, kunde inte hämta dina listor.',
+          'error',
+        );
       },
     });
   }

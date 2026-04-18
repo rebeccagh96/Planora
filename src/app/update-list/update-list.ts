@@ -23,31 +23,34 @@ export class UpdateList {
 
   constructor(
     private route: ActivatedRoute,
-    private service: ListsService,
+    private listsService: ListsService,
     private http: HttpClient,
   ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
 
-    this.service.getList(id).subscribe((list) => {
+    this.listsService.getListByListId(id).subscribe((list) => {
       this.todolist = list;
       this.listName = list.listName;
       this.stars = list.stars;
     });
 
     this.toDoListId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log('LIST-ID:', this.toDoListId);
   }
 
   updateList() {
-    const body = { listName: this.listName, stars: this.stars, toDoListId: this.toDoListId };
-    console.log(body);
-    if (this.listName == '') {
+    const body = {
+      listName: this.listName,
+      stars: this.stars,
+      toDoListId: this.toDoListId,
+    };
+
+    if (this.listName === '') {
       this.notification.showNotification('Du kan inte uppdatera till ett tomt namn!', 'error');
     }
     if (this.listName != '') {
-      this.http.patch('https://localhost:7097/api/ToDoList/' + this.toDoListId, body).subscribe({
+      this.listsService.updateList(body.toDoListId, body).subscribe({
         next: () => {
           (this.notification.showNotification('Listan uppdaterades!', 'success'),
             setTimeout(() => {

@@ -1,12 +1,13 @@
 <section class="stars">
-    <h1>Samlade stjärnor</h1>
-    <h3>Totalt samlade ⭐ för alla listor: {{ getTotalCollectedStars() }}</h3>
-    <div class="stars-container">
-        <ul>
-            <li *ngFor="let todolist of todolists">
-                <a [routerLink]="['/list', todolist.toDoListId]">{{todolist.listName}}</a>
-                <p>Totalt antal ⭐: {{todolist.stars}}</p>
-            </li>
-        </ul>
-    </div>
+  <h1>Samlade stjärnor</h1>
+  <h3>Totalt samlade ⭐ för alla listor: {{ getTotalCollectedStars() }}</h3>
+  <div class="stars-container">
+    <ul>
+      <li *ngFor="let todolist of todolists">
+        <a [routerLink]="['/list', todolist.toDoListId]">{{ todolist.listName }}</a>
+        <p>Totalt antal ⭐: {{ todolist.stars }}</p>
+      </li>
+    </ul>
+  </div>
+  <app-notification #notification></app-notification>
 </section>

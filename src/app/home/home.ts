@@ -1,31 +1,40 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { ListsService } from '../services/lists';
 import { ToDoList } from '../../types';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Notification } from '../notification/notification';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, Notification],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
   todolists: ToDoList[] = [];
 
-  constructor(private listsService: ListsService) {}
+  @Input() todolist!: ToDoList;
 
-  fetchLists() {
-    this.listsService.getData().subscribe({
-      next: (data: ToDoList[]) => {
-        this.todolists = data;
-      },
-    });
-  }
+  @ViewChild('notification') notification!: Notification;
+
+  constructor(private listsService: ListsService) {}
 
   ngOnInit() {
     this.fetchLists();
   }
 
-  @Input() todolist!: ToDoList;
+  fetchLists() {
+    this.listsService.getAllLists().subscribe({
+      next: (data: ToDoList[]) => {
+        this.todolists = data;
+      },
+      error: (err) => {
+        this.notification.showNotification(
+          'Något gick fel, kunde inte hämta dina listor.',
+          'error',
+        );
+      },
+    });
+  }
 }
