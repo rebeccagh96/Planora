@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Notification } from '../notification/notification';
-import { ListsService } from '../services/lists';
+import { ListsService } from '../services/lists-service';
 
 @Component({
   selector: 'app-add-todo',

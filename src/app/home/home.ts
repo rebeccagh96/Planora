@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { ListsService } from '../services/lists';
+import { ListsService } from '../services/lists-service';
 import { ToDoList } from '../../types';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';

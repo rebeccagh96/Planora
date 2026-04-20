@@ -3,7 +3,9 @@
   <div class="list-container">
     <ul>
       <li *ngFor="let todolist of todolists">
-        <a [routerLink]="['/list', todolist.toDoListId]">{{ todolist.listName }}</a>
+        <a class="list-item" [routerLink]="['/list', todolist.toDoListId]">{{
+          todolist.listName
+        }}</a>
       </li>
     </ul>
   </div>

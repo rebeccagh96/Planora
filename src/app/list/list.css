@@ -13,7 +13,7 @@
 
 .button-container {
   width: 100%;
-  margin: 1em 1em 0 1em;
+  margin: 1em 0 0 0;
   justify-content: space-between;
 }
 
@@ -41,6 +41,11 @@
   justify-content: space-between;
 }
 
+.todo-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .new-task-btn {
   padding: 15px;
   background-color: #1c3738;
@@ -56,6 +61,7 @@
 .edit-todo-button {
   border: none;
   background: none;
+  padding: 1rem;
 }
 
 .task-checkbox {
@@ -73,5 +79,5 @@
 .star.completed {
   display: flex;
   align-items: center;
-  margin-bottom: 0.2em;
+  margin: 0 0.8em 0.2em 0;
 }

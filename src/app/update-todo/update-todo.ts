@@ -3,7 +3,7 @@ import { ToDo, ToDoList } from '../../types';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ListsService } from '../services/lists';
+import { ListsService } from '../services/lists-service';
 import { HttpClient } from '@angular/common/http';
 import { ConfirmModal } from '../confirm-modal/confirm-modal';
 import { Notification } from '../notification/notification';
@@ -60,7 +60,7 @@ export class UpdateTodo {
     };
 
     if (this.name == '') {
-      this.notification.showNotification('Du kan inte uppdatera till ett tomt namn!');
+      this.notification.showNotification('Du kan inte uppdatera till ett tomt namn!', 'error');
     }
 
     if (this.name != '') {

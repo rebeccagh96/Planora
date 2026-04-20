@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToDoList } from '../../types';
-import { ListsService } from '../services/lists';
+import { ListsService } from '../services/lists-service';
 import { Notification } from '../notification/notification';
 
 @Component({

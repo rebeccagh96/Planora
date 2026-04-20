@@ -23,23 +23,26 @@
     <p>Antal ⭐:{{ todolist.stars }}</p>
     <ul>
       <li *ngFor="let todo of todolist.toDos">
-        <div>
+        <div class="todo-container">
           <button
             class="edit-todo-button"
             aria-label="Redigera uppgift"
             [routerLink]="['/update-todo', todolist.toDoListId, todo.toDoId]"
           >
-            <i class="fa-solid fa-pen"></i></button
-          >{{ todo.name }}
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <p>{{ todo.name }}</p>
         </div>
-        <div class="star" [class.completed]="todo.completed">⭐</div>
-        <input
-          aria-label="Klarmarkera uppgift"
-          class="task-checkbox"
-          type="checkbox"
-          [checked]="todo.completed"
-          (change)="toggleCompleted(todo)"
-        />
+        <div class="todo-container">
+          <span class="star" [class.completed]="todo.completed">⭐</span>
+          <input
+            aria-label="Klarmarkera uppgift"
+            class="task-checkbox"
+            type="checkbox"
+            [checked]="todo.completed"
+            (change)="toggleCompleted(todo)"
+          />
+        </div>
       </li>
     </ul>
     <button [routerLink]="['/add-todo', todolist.toDoListId]" class="new-task-btn">

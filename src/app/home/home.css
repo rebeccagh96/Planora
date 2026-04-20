@@ -17,8 +17,12 @@
 .list-container li {
   background-color: #8abbbd;
   list-style: none;
-  padding: 30px;
   margin: 20px 0;
+}
+
+.list-item {
+  display: block;
+  padding: 30px;
 }
 
 .new-list-btn {

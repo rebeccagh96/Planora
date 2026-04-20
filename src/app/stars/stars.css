@@ -21,6 +21,17 @@
   justify-content: space-between;
   background-color: #8abbbd;
   list-style: none;
-  padding: 30px;
   margin: 20px 0;
+}
+
+.list-item {
+  display: block;
+  padding: 30px;
+}
+
+.total-stars {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding-right: 30px;
 }

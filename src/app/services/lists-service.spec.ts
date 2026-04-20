@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { ListsService } from './lists';
+import { ListsService } from './lists-service';
 
 describe('Lists', () => {
   let service: ListsService;

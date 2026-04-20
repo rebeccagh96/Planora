@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ListsService } from '../services/lists';
+import { ListsService } from '../services/lists-service';
 import { ToDoList } from '../../types';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Notification } from '../notification/notification';

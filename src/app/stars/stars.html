@@ -4,8 +4,10 @@
   <div class="stars-container">
     <ul>
       <li *ngFor="let todolist of todolists">
-        <a [routerLink]="['/list', todolist.toDoListId]">{{ todolist.listName }}</a>
-        <p>Totalt antal ⭐: {{ todolist.stars }}</p>
+        <a class="list-item" [routerLink]="['/list', todolist.toDoListId]">{{
+          todolist.listName
+        }}</a>
+        <p class="total-stars">Totalt antal ⭐: {{ todolist.stars }}</p>
       </li>
     </ul>
   </div>
